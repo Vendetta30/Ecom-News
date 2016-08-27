@@ -7,9 +7,8 @@ import grails.plugin.springsecurity.annotation.Secured
 @Secured(['ROLE_ADMIN', 'ROLE_SUBADMIN'])
 class FeedController {
 
-    def feedService
-
-    def readRssFeed() {
-
+    def show(Long id) {
+        Feed feed = Feed.findById(id)
+        render(view: 'show', model: [feed: feed])
     }
 }
