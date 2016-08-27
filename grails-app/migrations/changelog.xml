@@ -94,5 +94,63 @@
             </column>
         </addColumn>
     </changeSet>
-
+    <changeSet author="vijay (generated)" id="1472287949259-1">
+        <createTable tableName="feed">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="feedPK"/>
+            </column>
+            <column name="version" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="content" type="longtext"/>
+            <column name="link" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="pub_date" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="title" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="url_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="vijay (generated)" id="1472287949259-2">
+        <createTable tableName="fetch_url">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="fetch_urlPK"/>
+            </column>
+            <column name="version" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="url_link" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="vijay (generated)" id="1472287949259-4">
+        <createIndex indexName="FK2FE59EC9C511C9" tableName="feed">
+            <column name="url_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="vijay (generated)" id="1472287949259-5">
+        <createIndex indexName="link_uniq_1472287949074" tableName="feed" unique="true">
+            <column name="link"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="vijay (generated)" id="1472287949259-6">
+        <createIndex indexName="title_uniq_1472287949079" tableName="feed" unique="true">
+            <column name="title"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="vijay (generated)" id="1472287949259-7">
+        <createIndex indexName="url_link_uniq_1472287949087" tableName="fetch_url" unique="true">
+            <column name="url_link"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="vijay (generated)" id="1472287949259-3">
+        <addForeignKeyConstraint baseColumnNames="url_id" baseTableName="feed" constraintName="FK2FE59EC9C511C9" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="fetch_url" referencesUniqueColumn="false"/>
+    </changeSet>
 </databaseChangeLog>

@@ -52,6 +52,9 @@ grails.project.dependency.resolution = {
         runtime 'mysql:mysql-connector-java:5.1.27'
         // runtime 'org.postgresql:postgresql:9.3-1100-jdbc41'
         test "org.grails:grails-datastore-test-support:1.0-grails-2.3"
+        //ROME FEEDS
+        compile 'rome:rome:0.9'
+        compile 'rome:modules:0.3.2'
     }
 
     plugins {
@@ -82,5 +85,10 @@ grails.project.dependency.resolution = {
         //compile ":handlebars-asset-pipeline:1.3.0.1"
         compile "org.grails.plugins:asset-pipeline:2.11.0"
         compile "org.grails.plugins:spring-security-core:2.0.0"
+
+        //RSS Feed
+        build(':release:2.2.1', ':rest-client-builder:1.0.3') {
+            export = false
+        }
     }
 }

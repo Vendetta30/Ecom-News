@@ -22,7 +22,6 @@ class BootStrapService {
             User userAdmin = new User(username: "admin@gmail.com", password: "123456", firstName: "admin_first", lastName: "admin_last")
             userAdmin.save(flush: true, failOnError: true)
             UserRole.create(userAdmin, adminRole, true)
-            UserRole.create(userAdmin, userRole, true)
             UserRole.create(userAdmin, subAdminRole, true)
         }
 
