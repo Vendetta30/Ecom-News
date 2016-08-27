@@ -19,7 +19,7 @@
 <script>
     $(document).ready(function () {
                 var refreshId = setInterval(function () {
-                    var url = '${createLink(controller: 'home', action: 'refresh')}';
+                    var url = '${createLink(controller: 'home', action: 'refresh', absolute: true)}';
                     $.ajax({
                         url: url,
                         datatype: 'json',
