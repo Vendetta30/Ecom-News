@@ -32,8 +32,9 @@ class FeedController {
     def gotoSite()
     {
         Browser.drive() {
-
-            setBaseUrl("https://yourstory.com/ys-stories/")}
+          println("==================HELLOOOO=========")
+            setBaseUrl("https://yourstory.com/ys-stories/")
+        }
     }
 
 }

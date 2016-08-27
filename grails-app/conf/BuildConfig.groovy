@@ -23,8 +23,8 @@ grails.project.fork = [
 
 grails.project.dependency.resolver = "maven" // or ivy
 grails.project.dependency.resolution = {
-    /*def gebVersion = "0.9.2"
-    def seleniumVersion = "2.53.0"*/
+    def gebVersion = "0.9.2"
+    def seleniumVersion = "2.53.0"
     // inherit Grails' default dependencies
     inherits("global") {
         // specify dependency exclusions here; for example, uncomment this to disable ehcache:
@@ -57,10 +57,10 @@ grails.project.dependency.resolution = {
         compile 'rome:rome:0.9'
         compile 'rome:modules:0.3.2'
 
-        /*compile "org.seleniumhq.selenium:selenium-remote-driver:$seleniumVersion"
+        compile "org.seleniumhq.selenium:selenium-remote-driver:$seleniumVersion"
         compile("org.seleniumhq.selenium:selenium-firefox-driver:$seleniumVersion")
         compile "org.gebish:geb-spock:$gebVersion"
-        compile "org.gebish:geb-junit4:$gebVersion"*/
+        compile "org.gebish:geb-junit4:$gebVersion"
     }
 
     plugins {
