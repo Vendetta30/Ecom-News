@@ -34,57 +34,18 @@
                         <asset:image class="main-logo img-responsive" src="logo.png" alt=""/>
                     </a>
                 </div>
-                <g:render template="/template/navigation"/>
 
-                <div class="searchNlogin">
-                    <ul>
-                        <li class="search-icon"><i class="fa fa-search"></i></li>
-                        <li class="dropdown user-panel"><a href="javascript:void(0);" class="dropdown-toggle"
-                                                           data-toggle="dropdown"><i class="fa fa-user"></i></a>
-
-                            <div class="dropdown-menu top-user-section">
-                                <div class="top-user-form">
-                                    <form action="${request.contextPath}/j_spring_security_check" method='POST'
-                                          id='loginForm' class='cssform' autocomplete='off'>
-                                        <div class="input-group" id="top-login-username">
-                                            <span class="input-group-addon">
-                                                <asset:image src="others/user-icon.png"
-                                                             alt=""/>
-                                            </span>
-                                            <input type='text' class='form-control' name='j_username' id='username'/>
-                                        </div>
-
-                                        <div class="input-group" id="top-login-password">
-                                            <span class="input-group-addon">
-                                                <asset:image src="others/password-icon.png"
-                                                             alt=""/>
-                                            </span>
-                                            <input type='password' class='form-control' name='j_password'
-                                                   id='password'/>
-                                        </div>
-
-                                        <div>
-                                            <p class="reset-user">Forgot <a href="#">Password/Username?</a></p>
-                                            <input type='submit' id="submit"
-                                                   value='${message(code: "springSecurity.login.button")}'
-                                                   class="btn btn-danger"/>
-                                        </div>
-                                    </form>
-                                </div>
-
-                                <div class="create-account">
-                                    <a href="#">Create a New Account</a>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-
-                    <div class="search">
-                        <form>
-                            <input type="text" class="search-form" autocomplete="off" placeholder="Type & Press Enter">
-                        </form>
-                    </div> <!--/.search-->
-                </div><!--.searchNlogin -->
+                <sec:ifNotLoggedIn>
+                    <g:render template="/template/navigation"/>
+                </sec:ifNotLoggedIn>
+                <sec:ifLoggedIn>
+                    <sec:ifAllGranted roles="ROLE_USER">
+                        <g:render template="/template/userNavigation"/>
+                    </sec:ifAllGranted>
+                    <sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_SUBADMIN">
+                        <g:render template="/template/adminNavigation"/>
+                    </sec:ifAnyGranted>
+                </sec:ifLoggedIn>
             </div>
         </div>
     </header><!--/#navigation-->

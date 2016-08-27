@@ -6,6 +6,6 @@ import grails.plugin.springsecurity.annotation.Secured
 class AdminController {
 
     def index() {
-        render controller:"feed",action:"readRssFeed"
+        render(view: 'index')
     }
 }

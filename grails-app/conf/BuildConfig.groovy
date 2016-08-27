@@ -23,8 +23,6 @@ grails.project.fork = [
 
 grails.project.dependency.resolver = "maven" // or ivy
 grails.project.dependency.resolution = {
-    /*def gebVersion = "0.9.2"
-    def seleniumVersion = "2.53.0"*/
     // inherit Grails' default dependencies
     inherits("global") {
         // specify dependency exclusions here; for example, uncomment this to disable ehcache:
@@ -54,13 +52,9 @@ grails.project.dependency.resolution = {
         runtime 'mysql:mysql-connector-java:5.1.27'
         // runtime 'org.postgresql:postgresql:9.3-1100-jdbc41'
         test "org.grails:grails-datastore-test-support:1.0-grails-2.3"
+        //ROME FEEDS
         compile 'rome:rome:0.9'
         compile 'rome:modules:0.3.2'
-
-        /*compile "org.seleniumhq.selenium:selenium-remote-driver:$seleniumVersion"
-        compile("org.seleniumhq.selenium:selenium-firefox-driver:$seleniumVersion")
-        compile "org.gebish:geb-spock:$gebVersion"
-        compile "org.gebish:geb-junit4:$gebVersion"*/
     }
 
     plugins {
@@ -71,15 +65,11 @@ grails.project.dependency.resolution = {
         compile ":scaffolding:2.0.3"
         compile ':cache:1.1.7'
 
-        build(':release:2.2.1', ':rest-client-builder:1.0.3') {
-            export = false
-        }
         // plugins needed at runtime but not for compilation
         runtime ":hibernate:3.6.10.16" // or ":hibernate4:4.3.5.4"
         runtime ":database-migration:1.4.0"
         runtime ":jquery:1.11.1"
         runtime ":resources:1.2.8"
-
         // Uncomment these (or add new ones) to enable additional resources capabilities
         //runtime ":zipped-resources:1.0.1"
         //runtime ":cached-resources:1.1"
@@ -95,5 +85,10 @@ grails.project.dependency.resolution = {
         //compile ":handlebars-asset-pipeline:1.3.0.1"
         compile "org.grails.plugins:asset-pipeline:2.11.0"
         compile "org.grails.plugins:spring-security-core:2.0.0"
+
+        //RSS Feed
+        build(':release:2.2.1', ':rest-client-builder:1.0.3') {
+            export = false
+        }
     }
 }
