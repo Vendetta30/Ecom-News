@@ -28,4 +28,11 @@ class FeedService {
             }
         }
     }
+
+    def refreshRecord() {
+        List<FetchUrl> fetchUrls = FetchUrl.findAll()
+        fetchUrls.each {
+            readRssFeedXml(it)
+        }
+    }
 }

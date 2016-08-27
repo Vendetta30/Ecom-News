@@ -1,5 +1,6 @@
 package ecom.news
 
+import com.budjb.rabbitmq.publisher.RabbitMessagePublisher
 import com.rss.Feed
 import com.rss.FetchUrl
 import grails.plugin.springsecurity.annotation.Secured

@@ -26,7 +26,7 @@
                         </div>
 
                         <h2 class="entry-title">
-                            <a href="${createLink(controller: 'feed', action: 'show', params: [id: feed?.id, title: feed?.title])}">${feed?.title}</a>
+                            <a href="${createLink(controller: 'feed', action: 'show', params: [id: feed?.id, title: feed?.title])}">${raw(feed?.content)}</a>
                         </h2>
                     </div>
                 </div>

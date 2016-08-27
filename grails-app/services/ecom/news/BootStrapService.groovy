@@ -3,6 +3,7 @@ package ecom.news
 import com.Role
 import com.User
 import com.UserRole
+import com.rss.FetchUrl
 
 class BootStrapService {
 
@@ -40,6 +41,17 @@ class BootStrapService {
             User userSubAdmin = new User(username: "subadmin@gmail.com", password: "123456", firstName: "subadmin_first", lastName: "subadmin_last")
             userSubAdmin.save(flush: true, failOnError: true)
             UserRole.create(userSubAdmin, subAdminRole, true)
+        }
+    }
+
+    public void createUrl() {
+        List<String> urlList = ["http://www.efinancialnews.com/fintech", "http://www.mobilepaymentstoday.com/", "http://www.ft.com/intl/comment/blogs", "https://letstalkpayments.com/"]
+        urlList.each { url ->
+            FetchUrl fetchUrl = FetchUrl.findByUrlLink(url)
+            if (!fetchUrl) {
+                fetchUrl = new FetchUrl(urlLink: url)
+                fetchUrl.save(flush: true)
+            }
         }
     }
 }

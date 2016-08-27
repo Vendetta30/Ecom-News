@@ -2,13 +2,14 @@ package ecom.news
 
 import com.Role
 import com.User
+import com.budjb.rabbitmq.publisher.RabbitMessagePublisher
+import grails.converters.JSON
 import grails.plugin.springsecurity.annotation.Secured
 
 @Secured(['permitAll'])
 class HomeController {
     def springSecurityService
-
-    def index() {}
+    RabbitMessagePublisher rabbitMessagePublisher
 
     def decide() {
         User user = springSecurityService.currentUser
@@ -25,5 +26,15 @@ class HomeController {
         } else {
             redirect(uri: '/')
         }
+    }
+
+    def refresh() {
+        log.info("SHOW RECORD")
+        def data = [:]
+        rabbitMessagePublisher.send {
+            routingKey = "testqueue"
+            body = "Hello!"
+        }
+        render data as JSON
     }
 }

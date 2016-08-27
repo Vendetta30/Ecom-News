@@ -147,3 +147,12 @@ grails.plugin.databasemigration.updateOnStart = true
 grails.plugin.databasemigration.updateOnStartFileNames = ['changelog.xml']
 grails.resources.rewrite.css = false
 
+rabbitmq {
+    connection = {
+        connection host: "localhost", username: "guest", password: "guest"
+    }
+    queues = {
+        queue name: "testqueue"
+    }
+}
+

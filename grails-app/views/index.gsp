@@ -14,8 +14,25 @@
             <g:render template="/home/topNews"/>
             <g:render template="/home/mostPopular"/>
         </div>
-    </div><!--/.section-->
-
-</div><!--/.container-fluid-->
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+                var refreshId = setInterval(function () {
+                    var url = '${createLink(controller: 'home', action: 'refresh')}';
+                    $.ajax({
+                        url: url,
+                        datatype: 'json',
+                        type: 'POST',
+                        success: function (response) {
+                        },
+                        error: function (data) {
+                            emptyForm();
+                        }
+                    });
+                }, 10000);
+            }
+    )
+</script>
 </body>
 </html>

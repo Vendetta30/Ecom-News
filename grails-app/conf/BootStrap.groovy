@@ -5,6 +5,7 @@ class BootStrap {
         bootStrapService.createRoles()
         bootStrapService.createAdmin()
         bootStrapService.createSubAdmin()
+        bootStrapService.createUrl()
     }
     def destroy = {
     }
