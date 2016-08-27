@@ -36,7 +36,7 @@ grails.mime.types = [ // the first one is the default format
 
 // What URL patterns should be processed by the resources plugin
 grails.resources.adhoc.patterns = ['/images/*', '/css/*', '/js/*', '/plugins/*']
-grails.resources.adhoc.includes = ['/images/**', '/css/**', '/js/**', '/plugins/**']
+grails.resources.adhoc.includes = ['/images/**', '/css/**', '/js/**', '/plugins/**', '/fonts/**']
 
 // Legacy setting for codec used to encode data with ${}
 grails.views.default.codec = "html"
@@ -114,7 +114,9 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
         '/**/js/**'      : ['permitAll'],
         '/**/css/**'     : ['permitAll'],
         '/**/images/**'  : ['permitAll'],
-        '/**/favicon.ico': ['permitAll']
+        '/**/fonts/**'   : ['permitAll'],
+        '/**/favicon.ico': ['permitAll'],
+        '/**/favicon.png': ['permitAll']
 ]
 
 // log4j configuration
@@ -141,4 +143,5 @@ log4j = {
 grails.plugin.databasemigration.changelogFileName = 'changelog.xml'
 grails.plugin.databasemigration.updateOnStart = true
 grails.plugin.databasemigration.updateOnStartFileNames = ['changelog.xml']
+grails.resources.rewrite.css = false
 
