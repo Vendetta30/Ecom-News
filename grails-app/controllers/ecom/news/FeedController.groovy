@@ -10,12 +10,6 @@ class FeedController {
     def feedService
 
     def readRssFeed() {
-        FetchUrl url = new FetchUrl(urlLink: "http://timesofindia.indiatimes.com/rssfeeds/1081479906.cms")
-        url.save(flush: true, failOnError: true)
-        feedService.readRssFeedXml(url)
-        List feedList = Feed.createCriteria().listDistinct {
-            eq("url", url)
-        }
-        render view: "showFeed", model: [feedList: feedList]
+
     }
 }
