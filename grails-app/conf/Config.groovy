@@ -104,6 +104,8 @@ grails.plugin.springsecurity.userLookup.userDomainClassName = 'com.User'
 grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'com.UserRole'
 grails.plugin.springsecurity.authority.className = 'com.Role'
 grails.plugin.springsecurity.successHandler.defaultTargetUrl = '/home/decide'
+grails.plugin.springsecurity.auth.loginFormUrl = '/'
+
 grails.plugin.springsecurity.logout.postOnly = false
 
 grails.plugin.springsecurity.controllerAnnotations.staticRules = [

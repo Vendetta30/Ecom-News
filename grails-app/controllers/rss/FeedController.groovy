@@ -13,27 +13,6 @@ class FeedController {
 
     def index() {}
 
-    def readRssFeed() {
-        // Url url=new Url(urlLink:"http://timesofindia.indiatimes.com/rssfeeds/1081479906.cms")
-        //url.save(flush: true,failOnError: true)
-        //String url_Link="http://timesofindia.indiatimes.com/rssfeeds/1081479906.cms"
-        //Url url=Url.findByUrlLink(url_Link)
-        Url url = Url.findById(params.id as Long)
-        println(params)
-        id=params.id
-
-        feedService.readRssFeedXml(url)
-        redirect action:"showFeed",params:[id:id]
-    }
-
-    def showFeed() {
-        println(params.id)
-        Url url=Url.findById(params.id as Long)
-        List feedList=Feed.createCriteria().listDistinct {
-            eq("url", url)
-        }
-        render view:"showFeed",model: [feedList:feedList]
-    }
     def gotoSite()
     {
         Browser.drive() {
