@@ -1,7 +1,10 @@
 package rss
 
+import CO.ScrapUtil
 import geb.Browser
 import grails.plugin.springsecurity.annotation.Secured
+
+import javax.swing.text.Document
 
 @Secured("ROLE_ADMIN")
 class FeedController {
@@ -16,9 +19,11 @@ class FeedController {
         //String url_Link="http://timesofindia.indiatimes.com/rssfeeds/1081479906.cms"
         //Url url=Url.findByUrlLink(url_Link)
         Url url = Url.findById(params.id as Long)
+        println(params)
+        id=params.id
 
         feedService.readRssFeedXml(url)
-        redirect action:"showFeed"
+        redirect action:"showFeed",params:[id:id]
     }
 
     def showFeed() {
@@ -33,7 +38,18 @@ class FeedController {
     {
         Browser.drive() {
           println("==================HELLOOOO=========")
-            setBaseUrl("https://yourstory.com/ys-stories/")
+            setBaseUrl("http://economictimes.indiatimes.com/small-biz/startups")
+            go()
+           def st= $("#pageContent").find(".eachStory").find("a")
+            st.eachWithIndex {a,i->
+              def str = st.eq(i).attr("href")
+                def value=ScrapUtil.calculateTransaction(str.toLowerCase())
+               if(value) {
+                   println("=====================ATTTTTTTTT===========${str}")
+               }
+            }
+
+
         }
     }
 
