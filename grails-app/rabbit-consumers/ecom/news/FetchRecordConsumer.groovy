@@ -4,12 +4,14 @@ import com.budjb.rabbitmq.consumer.MessageContext
 
 class FetchRecordConsumer {
 
+    def feedService
+
     static rabbitConfig = [
             queue: "testqueue"
     ]
 
     def handleMessage(def body, MessageContext context) {
-        println body
+        feedService.refreshRecord()
         return "Hello to you, too!"
     }
 }

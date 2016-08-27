@@ -25,4 +25,9 @@ class AdminController {
         }
         render view: "showFeed", model: [feedList: feedList]
     }
+
+    def refresh() {
+        feedService.refreshRecord()
+        render "DONE"
+    }
 }
