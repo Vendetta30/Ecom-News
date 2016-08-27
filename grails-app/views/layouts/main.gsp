@@ -1,28 +1,170 @@
 <!DOCTYPE html>
-<!--[if lt IE 7 ]> <html lang="en" class="no-js ie6"> <![endif]-->
-<!--[if IE 7 ]>    <html lang="en" class="no-js ie7"> <![endif]-->
-<!--[if IE 8 ]>    <html lang="en" class="no-js ie8"> <![endif]-->
-<!--[if IE 9 ]>    <html lang="en" class="no-js ie9"> <![endif]-->
-<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js"><!--<![endif]-->
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		<title><g:layoutTitle default="Grails"/></title>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="shortcut icon" href="${resource(dir: 'images', file: 'favicon.ico')}" type="image/x-icon">
-		<link rel="apple-touch-icon" href="${resource(dir: 'images', file: 'apple-touch-icon.png')}">
-		<link rel="apple-touch-icon" sizes="114x114" href="${resource(dir: 'images', file: 'apple-touch-icon-retina.png')}">
-		<link rel="stylesheet" href="${resource(dir: 'css', file: 'main.css')}" type="text/css">
-		<link rel="stylesheet" href="${resource(dir: 'css', file: 'mobile.css')}" type="text/css">
-		<g:layoutHead/>
-		<g:javascript library="application"/>		
-		<r:layoutResources />
-	</head>
-	<body>
-		<div id="grailsLogo" role="banner"><a href="http://grails.org"><img src="${resource(dir: 'images', file: 'grails_logo.png')}" alt="Grails"/></a></div>
-		<g:layoutBody/>
-		<div class="footer" role="contentinfo"></div>
-		<div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>
-		<r:layoutResources />
-	</body>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title><g:layoutTitle/></title>
+    <link href='https://fonts.googleapis.com/css?family=Signika+Negative:400,300,600,700' rel='stylesheet'
+          type='text/css'>
+    <link href='https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css' rel='stylesheet'
+          type='text/css'>
+    <link rel="shortcut icon" href="${assetPath(src: 'favicon.ico')}">
+    <asset:stylesheet src="application.css"/>
+    <asset:javascript src="application.js"/>
+    <g:layoutHead/>
+
+</head><!--/head-->
+<body class="box-layout">
+<div id="main-wrapper" class="box-width">
+    <header id="navigation">
+        <div class="navbar" role="banner">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                    <a class="navbar-brand" href="index.html">
+                        <asset:image class="main-logo img-responsive" src="logo.png" alt=""/>
+                    </a>
+                </div>
+
+                <sec:ifNotLoggedIn>
+                    <g:render template="/template/navigation"/>
+                </sec:ifNotLoggedIn>
+                <sec:ifLoggedIn>
+                    <sec:ifAllGranted roles="ROLE_USER">
+                        <g:render template="/template/userNavigation"/>
+                    </sec:ifAllGranted>
+                    <sec:ifAnyGranted roles="ROLE_ADMIN,ROLE_SUBADMIN">
+                        <g:render template="/template/adminNavigation"/>
+                    </sec:ifAnyGranted>
+                </sec:ifLoggedIn>
+            </div>
+        </div>
+    </header><!--/#navigation-->
+
+<g:layoutBody/>
+
+    <div class="footer-top">
+        <div class="container-fluid">
+            <ul class="list-inline social-icons text-center">
+                <li><a href="#"><i class="fa fa-facebook"></i>Facebook</a></li>
+                <li><a href="#"><i class="fa fa-twitter"></i>Twitter</a></li>
+                <li><a href="#"><i class="fa fa-google-plus"></i>Google Plus</a></li>
+                <li><a href="#"><i class="fa fa-linkedin"></i>Linkedin</a></li>
+                <li><a href="#"><i class="fa fa-pinterest"></i>Pinterest</a></li>
+                <li><a href="#"><i class="fa fa-youtube"></i>Youtube</a></li>
+            </ul>
+        </div>
+    </div><!--/.footer-top-->
+
+    <footer id="footer">
+        <div class="bottom-widgets">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="widget">
+                            <h2>Categories</h2>
+                            <ul>
+                                <li><a href="#">Business</a></li>
+                                <li><a href="#">Politics</a></li>
+                                <li><a href="#">Sports</a></li>
+                                <li><a href="#">World</a></li>
+                                <li><a href="#">Technology</a></li>
+                            </ul>
+                            <ul>
+                                <li><a href="#">Environment</a></li>
+                                <li><a href="#">Health</a></li>
+                                <li><a href="#">Entertainment</a></li>
+                                <li><a href="#">Lifestyle</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-2">
+                        <div class="widget">
+                            <h2>Editions</h2>
+                            <ul>
+                                <li><a href="#">United States</a></li>
+                                <li><a href="#">China</a></li>
+                                <li><a href="#">India</a></li>
+                                <li><a href="#">Maxico</a></li>
+                                <li><a href="#">Middle East</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <div class="widget">
+                            <h2>Popular Tags</h2>
+                            <ul>
+                                <li><a href="#">Gallery</a></li>
+                                <li><a href="#">Sports</a></li>
+                                <li><a href="#">Featured</a></li>
+                                <li><a href="#">World</a></li>
+                                <li><a href="#">Fashion</a></li>
+                            </ul>
+                            <ul>
+                                <li><a href="#">Environment</a></li>
+                                <li><a href="#">Health</a></li>
+                                <li><a href="#">Entertainment</a></li>
+                                <li><a href="#">Lifestyle</a></li>
+                                <li><a href="#">Business</a></li>
+                            </ul>
+                            <ul>
+                                <li><a href="#">Tech</a></li>
+                                <li><a href="#">Movie</a></li>
+                                <li><a href="#">Music</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-2">
+                        <div class="widget">
+                            <h2>Products</h2>
+                            <ul>
+                                <li><a href="#">Ebook</a></li>
+                                <li><a href="#">Baby Product</a></li>
+                                <li><a href="#">Magazine</a></li>
+                                <li><a href="#">Sports Elements</a></li>
+                                <li><a href="#">Technology</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container-fluid text-center">
+                <p>Copyright &copy; 2016,  DailyNews. Developed by <a href="#">Nexthoughts</a></p>
+            </div>
+        </div>
+    </footer>
+</div><!--/#main-wrapper-->
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-73239902-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+</body>
 </html>

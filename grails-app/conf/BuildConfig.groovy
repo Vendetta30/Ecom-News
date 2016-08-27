@@ -93,6 +93,12 @@ grails.project.dependency.resolution = {
         //compile ":less-asset-pipeline:1.5.3"
         //compile ":coffee-asset-pipeline:1.5.0"
         //compile ":handlebars-asset-pipeline:1.3.0.1"
+        compile "org.grails.plugins:asset-pipeline:2.11.0"
         compile "org.grails.plugins:spring-security-core:2.0.0"
+
+        //RSS Feed
+        build(':release:2.2.1', ':rest-client-builder:1.0.3') {
+            export = false
+        }
     }
 }
