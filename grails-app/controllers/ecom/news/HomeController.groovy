@@ -9,6 +9,7 @@ import grails.plugin.springsecurity.annotation.Secured
 @Secured(['permitAll'])
 class HomeController {
     def springSecurityService
+    def createRecordService
     RabbitMessagePublisher rabbitMessagePublisher
 
     def decide() {
@@ -36,5 +37,9 @@ class HomeController {
             body = "Hello!"
         }
         render data as JSON
+    }
+
+    def create(){
+        createRecordService.createUser()
     }
 }

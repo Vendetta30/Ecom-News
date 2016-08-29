@@ -15,7 +15,7 @@
                                 data-toggle="dropdown">Pages <span class="caret"></span></a>
             <ul class="dropdown-menu">
                 <li><a href="">News Details Image Post</a></li>
-                <li><a href="news-details2.html">News Details Video Post</a></li>
+                <li><a href="news-details2.html" onclick="refresh()">News Details Video Post</a></li>
                 <li><a href="listing.html">News Listing Page</a></li>
                 <li><a href="404.html">404 Error Page</a></li>
                 <li role="separator" class="divider"></li>

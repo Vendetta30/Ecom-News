@@ -17,22 +17,19 @@
     </div>
 </div>
 <script>
-    $(document).ready(function () {
-                var refreshId = setInterval(function () {
-                    var url = '${createLink(controller: 'home', action: 'refresh', absolute: true)}';
-                    $.ajax({
-                        url: url,
-                        datatype: 'json',
-                        type: 'POST',
-                        success: function (response) {
-                        },
-                        error: function (data) {
-                            emptyForm();
-                        }
-                    });
-                }, 10000 * 60 * 3);
+    function refresh() {
+        var url = '${createLink(controller: 'home', action: 'refresh', absolute: true)}';
+        $.ajax({
+            url: url,
+            datatype: 'json',
+            type: 'POST',
+            success: function (response) {
+            },
+            error: function (data) {
+                emptyForm();
             }
-    )
+        });
+    }
 </script>
 </body>
 </html>

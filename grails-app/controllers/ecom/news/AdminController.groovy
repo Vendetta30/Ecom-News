@@ -1,6 +1,5 @@
 package ecom.news
 
-import com.budjb.rabbitmq.publisher.RabbitMessagePublisher
 import com.rss.Feed
 import com.rss.FetchUrl
 import grails.plugin.springsecurity.annotation.Secured
@@ -8,6 +7,7 @@ import grails.plugin.springsecurity.annotation.Secured
 @Secured(['ROLE_ADMIN', 'ROLE_SUBADMIN'])
 class AdminController {
     def feedService
+    def createRecordService
 
     def index() {
         render(view: 'index')
@@ -19,7 +19,7 @@ class AdminController {
             url = new FetchUrl(urlLink: "http://timesofindia.indiatimes.com/rssfeeds/1081479906.cms")
             url.save(flush: true, failOnError: true)
         }
-        feedService.readRssFeedXml(url)
+//        feedService.readRssFeedXml(url)
         List feedList = Feed.createCriteria().listDistinct {
             eq("url", url)
         }
@@ -29,5 +29,9 @@ class AdminController {
     def refresh() {
         feedService.refreshRecord()
         render "DONE"
+    }
+
+    def generateComment() {
+        render "" + createRecordService.generateComments("")
     }
 }
